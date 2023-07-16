@@ -1,5 +1,5 @@
 """ 
-This will not run if you do not use the venv, to do this, ensure you are in the gameStarter directory and type:
+This will not run if you do not use the venv, to do this, ensure that the venv is active, ensure you are in the gameStarter directory and type:
 python simpleGame.py
 """
 import PySimpleGUI as sg
