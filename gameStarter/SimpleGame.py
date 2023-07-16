@@ -43,7 +43,7 @@ def game_play(direction):
     if direction.lower() in 'northsouth': # is this a nasty check?
         game_place = game_places[game_state]
         proposed_state = game_place[direction]
-        
+
         if proposed_state == '' :
             return 'You can not go that way.\n'+game_places[game_state]['Story']
         else :
@@ -58,15 +58,20 @@ def make_a_window():
     Returns:
         window: the handle to the game window
     """
-    
-    sg.theme('Dark Blue 3')  # please make your windows 
-    prompt_input = [sg.Text('Enter your command',font='Any 14'),sg.Input(key='-IN-',size=(20,1),font='Any 14')]
-    buttons = [sg.Button('Enter',  bind_return_key=True), sg.Button('Exit')]
-    command_col = sg.Column([prompt_input,buttons],element_justification='r')
-    layout = [[sg.Image(r'forest.png',size=(100,100),key="-IMG-"), sg.Text(show_current_place(),size=(100,4), font='Any 12', key='-OUTPUT-')],
-             [command_col]]
 
-    return  sg.Window('Adventure Game', layout, size=(320,200))
+    sg.theme('Dark Blue 3')  # please make your windows
+    prompt_input = [sg.Text('Enter your command:', font='Any 20'), sg.Input(key='-IN-', size=(20, 1), font='Any 20')]
+    buttons = [sg.Button('Enter', bind_return_key=True, size=(50, 50)), sg.Button('Exit', size=(30, 30))]
+    command_col = sg.Column([prompt_input, buttons], element_justification='r')
+    
+    # Update the font size for the game story text element
+    story_text = sg.Text(show_current_place(), size=(100, 4), font=('Any', 18), key='-OUTPUT-')
+    
+    layout = [[sg.Image(r'forest.png', size=(300, 300), key="-IMG-"), story_text],
+              [command_col]]
+
+    return sg.Window('Adventure Game', layout, size=(640, 480))
+
     
 
 if __name__ == "__main__":
@@ -79,17 +84,18 @@ if __name__ == "__main__":
     window = make_a_window()
 
     while True:
+
         event, values = window.read()
         print(event)
         if event ==  'Enter': 
                 if 'North'.lower() in values['-IN-'].lower():
                     current_story = game_play('North')
-                    window['-OUTPUT-'].update(current_story)
+                    window['-OUTPUT-'].update(current_story, font=('Any', 18))
                 elif 'South'.lower() in values['-IN-'].lower():
-                    current_story = game_play('South')
-                    window['-OUTPUT-'].update(current_story)
+                    current_story = game_play('South')  
+                    window['-OUTPUT-'].update(current_story, font=('Any', 18))
                 
-                window['-IMG-'].update(game_places[game_state]['Image'],size=(100,100))
+                window['-IMG-'].update(game_places[game_state]['Image'],size=(300,300))
                 pass
         elif event == 'Exit' or event is None or event == sg.WIN_CLOSED:
                 break
