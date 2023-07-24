@@ -5,7 +5,7 @@ import PySimpleGUI as sg
 import time
 import cmd_parser.token as token
 
-# Data for the game, this is a dictionary of places and their features
+# Data for the game, this is a dictionary of places and their commands/features
 game_state = 'Forest'
 game_places = {'Forest': {'Story': 'You are in the forest.\nTo the north is a cave.\nTo the south is a castle\nTo the west is a river.',
                         'North': 'Cave',
@@ -67,7 +67,8 @@ def game_play(direction):
     """
     global game_state
 
-    if direction.lower() in 'northsoutheastwest':  # is this a nasty check?
+    #If the direction is a valid command
+    if direction.lower() in token.valid_list(values['-IN-']):
         game_place = game_places[game_state]
         proposed_state = game_place[direction.capitalize()]
         if proposed_state == '':
