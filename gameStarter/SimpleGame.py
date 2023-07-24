@@ -7,7 +7,7 @@ import cmd_parser.token as token
 
 # Data for the game, this is a dictionary of places and their features
 game_state = 'Forest'
-game_places = {'Forest': {'Story': 'You are in the forest.\nTo the north is a cave.\nTo the south is a castle',
+game_places = {'Forest': {'Story': 'You are in the forest.\nTo the north is a cave.\nTo the south is a castle\nTo the west is a river.',
                         'North': 'Cave',
                         'East': '',
                         'South': 'Castle',
@@ -16,7 +16,7 @@ game_places = {'Forest': {'Story': 'You are in the forest.\nTo the north is a ca
 
                 'River': {'Story': 'You are at the river.\nTo the east is the forest.',
                         'North': '',
-                        'East': 'River',
+                        'East': 'Forest',
                         'South': '',
                         'West': '',
                         'Image': 'forest.png'},
