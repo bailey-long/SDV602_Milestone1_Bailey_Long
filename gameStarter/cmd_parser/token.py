@@ -3,7 +3,7 @@ from enum import Enum
 
 Take string containing a proposed command produce a list of tokens
 """
-_vocab_tokens = set(['north', 'south', 'east', 'west', 'monster', 'fight', 'pick', 'up',
+_vocab_tokens = set(['north', 'south', 'east', 'west', 'monster', 'fight', 'pick', 'up', 'search',
                     'open', 'close', 'run', 'duck', 'hide', 'go', 'swing', 'number', 'operator', 'name'])
 _operators = set(['+', '-', 'x', '/', '(', ')'])
 
