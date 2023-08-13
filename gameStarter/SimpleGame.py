@@ -16,12 +16,16 @@ def make_a_window():
     """
 
     sg.theme('Dark Blue 3')
-    prompt_input = [sg.Text('Where do you want to go?', font='Any 14'), sg.Input(
-        key='-IN-', size=(20, 1), font='Any 14',  do_not_clear=False)]
-    buttons = [sg.Button('Enter',  bind_return_key=True), sg.Button('Exit')]
+    prompt_input = [sg.Text('Where do you want to go?', font='Any 14'),
+                sg.Input(key='-IN-', size=(20, 1), font='Any 14', do_not_clear=False)]
+    buttons = [sg.Button('Enter', bind_return_key=True, font='Any 14'), sg.Button('Exit', font='Any 14')]
     command_col = sg.Column([prompt_input, buttons], element_justification='right')
-    layout = [[sg.Image(r'images/forest.png', size=(100, 100), key="-IMG-"), sg.Text(cm.show_current_place(), size=(100, 4), font='Any 12', key='-OUTPUT-')],
-              [command_col]]
+    layout = [
+    [sg.Image(r'images/forest.png', size=(200, 150), key="-IMG-"),
+    sg.Text(cm.show_current_place(), size=(100, 4), font=('Any 12'), key='-OUTPUT-', justification='center', relief=sg.RELIEF_RIDGE)],
+    [sg.HorizontalSeparator()],
+    [command_col]
+    ]
 
     return sg.Window('Adventure Game', layout, size=(640, 360),)
 
