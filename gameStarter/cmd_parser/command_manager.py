@@ -1,4 +1,7 @@
 import cmd_parser.token as token
+import cmd_parser.inventory as invent
+import cmd_parser.monster_fight as fight
+import cmd_parser.status as status
 
 # Data for the game, this is a dictionary of places and their commands/features
 game_state = 'Forest'
@@ -53,7 +56,7 @@ def game_play(direction):
     Runs the game_play
 
     Args:
-        direction string: _North or South
+        command string
 
     Returns:
         string: the story at the current place

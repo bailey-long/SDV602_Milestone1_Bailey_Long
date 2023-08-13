@@ -1,5 +1,5 @@
 """ 
-A comment describing the game module
+Runs the gui elements of the game
 """
 import PySimpleGUI as sg
 import time
@@ -15,7 +15,7 @@ def make_a_window():
         window: the handle to the game window   
     """
 
-    sg.theme('Dark Blue 3')  # please make your windows
+    sg.theme('Dark Blue 3')
     prompt_input = [sg.Text('Where do you want to go?', font='Any 14'), sg.Input(
         key='-IN-', size=(20, 1), font='Any 14',  do_not_clear=False)]
     buttons = [sg.Button('Enter',  bind_return_key=True), sg.Button('Exit')]
