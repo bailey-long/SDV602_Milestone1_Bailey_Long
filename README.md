@@ -1,13 +1,5 @@
 # SDV602
 
-## Notes
-### print()
-Prints to the console
-### If Statements
-Python does not use curly braces like other languages, instead an if statement would look like this  
-```python 
-if x = y 
-    print ("x is equal to y")
-elif x > y
-    print ("x is greater than y")
-```
+## TODO  
+Remove virtual environment from the repo
+Add instructions for setting up the venv with required libraries and running the app from it
