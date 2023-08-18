@@ -22,7 +22,7 @@ def valid_list(p_input_string):
     """
     result = []
     for astring in p_input_string.split():
-        if astring.lower() in _vocab_tokens or astring in _operators or astring in inventory.equipped_items or astring in inventory.carried_items:
+        if astring.lower() in _vocab_tokens or astring in _operators or astring in inventory.carried_items:
             result += [astring]
 
     return result

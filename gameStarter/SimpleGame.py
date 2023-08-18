@@ -22,7 +22,7 @@ def make_a_window():
     command_col = sg.Column([prompt_input, buttons], element_justification='right')
     layout = [
     [sg.Image(r'images/forest.png', size=(200, 150), key="-IMG-"),
-    sg.Text(cm.show_current_place(), size=(100, 4), font=('Any 12'), key='-OUTPUT-', justification='center', relief=sg.RELIEF_RIDGE)],
+    sg.Text(cm.show_current_place(), size=(100, 8), font=('Any 12'), key='-OUTPUT-', justification='center', relief=sg.RELIEF_RIDGE)],
     [sg.HorizontalSeparator()],
     [command_col]
     ]

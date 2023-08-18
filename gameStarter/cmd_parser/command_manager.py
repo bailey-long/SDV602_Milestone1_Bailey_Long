@@ -48,8 +48,8 @@ def show_current_place():
         string: the story at the current place
     """
     global game_state
-
-    return game_places[game_state]['Story']
+    return (f"{status.get()}\n"
+            f"{game_places[game_state]['Story']}")
 
 def game_play(direction):
     """
@@ -68,8 +68,13 @@ def game_play(direction):
         game_place = game_places[game_state]
         proposed_state = game_place[direction.capitalize()]
         if proposed_state == '':
-            return 'You can not go that way.\n'+ game_places[game_state]['Story']
+            status.reduce(1) # lose health as you move
+            return  ("You bump into a wall, go another way.\n"
+                    f"\n"
+                    f"{game_places[game_state]['Story']}")
         else:
             game_state = proposed_state
-            return game_places[game_state]['Story']
+            return (f"{status.get()}\n"
+                    f"\n"
+                    f"{game_places[game_state]['Story']}")
     
