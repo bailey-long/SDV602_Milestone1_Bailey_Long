@@ -21,8 +21,8 @@ def make_a_window():
     buttons = [sg.Button('Enter', bind_return_key=True, font='Any 14'), sg.Button('Exit', font='Any 14')]
     command_col = sg.Column([prompt_input, buttons], element_justification='right')
     layout = [
-    [sg.Image(r'images/forest.png', size=(200, 150), key="-IMG-"),
-    sg.Text(cm.show_current_place(), size=(100, 8), font=('Any 12'), key='-OUTPUT-', justification='center', relief=sg.RELIEF_RIDGE)],
+    [sg.Image(r'images/forest.png', size=(180, 150), key="-IMG-"),
+    sg.Text(cm.show_current_place(), size=(100, 8), font=('Any 12'), key='-OUTPUT-', justification='left', relief=sg.RELIEF_RIDGE)],
     [sg.HorizontalSeparator()],
     [command_col]
     ]
@@ -31,7 +31,7 @@ def make_a_window():
 
 
 if __name__ == "__main__":
-    # testing for now
+    # testing for now - these should be part of a test suite
     # print(show_current_place())
     # current_story = game_play('North')
     # print(show_current_place())
@@ -43,18 +43,16 @@ if __name__ == "__main__":
         event, values = window.read()
         print(event)
         if event == 'Enter':
-            list_of_tokens = token.valid_list(values['-IN-'].lower())
+            current_story = cm.game_play(values['-IN-'].lower())
 
-            for atoken in list_of_tokens:
-                current_story = cm.game_play(atoken)
-                window['-OUTPUT-'].update(current_story)
+            window['-OUTPUT-'].update(current_story)
+            print(current_story)
 
-            window['-IMG-'].update(r'images/'+ cm.game_places[cm.game_state]
-                                   ['Image'], size=(100, 100))
-
+            window['-IMG-'].update(r'images/'+cm.game_places[cm.game_state]
+                                   ['Image'], size=(180, 150))
             pass
         elif event == 'Exit' or event is None or event == sg.WIN_CLOSED:
-            break
+            break  # out of loop
         else:
             pass
 
