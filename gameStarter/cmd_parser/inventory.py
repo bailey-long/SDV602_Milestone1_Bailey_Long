@@ -13,6 +13,9 @@ def remove_item(item_name):
 def has_item(item_name):
     return item_name in _player_inventory
 
+def contents():
+    return _player_inventory
+
 #Function to clear inventory if the player dies
 def reset():
     _player_inventory = set()

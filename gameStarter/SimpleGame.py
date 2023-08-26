@@ -24,6 +24,7 @@ def make_a_window():
     [sg.Image(r'images/forest.png', size=(180, 150), key="-IMG-"),
     sg.Text(cm.show_current_place(), size=(120, 12), font=('Any 12'), key='-OUTPUT-', justification='left', relief=sg.RELIEF_RIDGE)],
     [sg.HorizontalSeparator()],
+    [sg.Text(" Type \"Inventory\" to see current inventory ")],
     [command_col]
     ]
 

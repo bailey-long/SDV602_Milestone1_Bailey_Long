@@ -4,8 +4,6 @@ import cmd_parser.inventory as invent
 import cmd_parser.monster_fight as fight
 import cmd_parser.status as status
 
-import random
-
 # Function to handle picking up an item
 def pick_up_item(item):
     """
@@ -25,44 +23,6 @@ def pick_up_item(item):
     
     # Show the current place's story
     return show_current_place()
-
-def fight(game_place):
-    """
-    Implements the fight scenario.
-
-    Args:
-        game_place (string): The place where the fight is happening.
-
-    Returns:
-        string: The story result after the fight.
-    """
-    global game_state
-
-    # Check if the player has a sword in their inventory
-    if invent.has_item('Sword'):
-        # Flip a random coin to decide the outcome of the fight
-        fight_outcome = random.choice(['win', 'lose'])
-
-        if fight_outcome == 'win':
-            # Player wins the fight
-            game_places[game_state]['Story'] = 'You are in the dungeon\ninfront of you lies a dead troll.\nTo the north is the castle.'
-            return show_current_place()
-        else:
-            # Player loses the fight, lose health and handle death
-            status.reduce(3)
-            if status.check() <= 0:
-                # Player has died, reset game_state and inventory
-                game_state = 'Forest'
-                invent.reset()
-                story_result = show_current_place() + "\n" + "\nYou were killed, this is no time to die, Nilrem has ressurected you!"
-            else:
-                story_result = show_current_place() + "\n" "\nYou lost the fight but managed to escape with your life."
-
-    else:
-        story_result = show_current_place() + "\n" "\nYou don't have a sword to fight with, go find one."
-
-    return story_result
-
 
 # Function to handle movement to a new location
 def move(game_place):
@@ -128,7 +88,7 @@ game_places = {
                   '\n'
                   '\ninfront of you stands a fearsome troll, FIGHT?.\nTo the north is the castle.'],
         'North': (move, 'Castle'),
-        'Fight': (fight, "Dungeon"),
+        'Fight': (fight.fight, "Dungeon"),
         'Image': 'frog.png'
     }
 }
