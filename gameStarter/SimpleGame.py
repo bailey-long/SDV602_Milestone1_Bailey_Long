@@ -22,12 +22,12 @@ def make_a_window():
     command_col = sg.Column([prompt_input, buttons], element_justification='right')
     layout = [
     [sg.Image(r'images/forest.png', size=(180, 150), key="-IMG-"),
-    sg.Text(cm.show_current_place(), size=(100, 8), font=('Any 12'), key='-OUTPUT-', justification='left', relief=sg.RELIEF_RIDGE)],
+    sg.Text(cm.show_current_place(), size=(120, 12), font=('Any 12'), key='-OUTPUT-', justification='left', relief=sg.RELIEF_RIDGE)],
     [sg.HorizontalSeparator()],
     [command_col]
     ]
 
-    return sg.Window('Adventure Game', layout, size=(640, 360),)
+    return sg.Window('Adventure Game', layout, size=(700, 360),)
 
 
 if __name__ == "__main__":
