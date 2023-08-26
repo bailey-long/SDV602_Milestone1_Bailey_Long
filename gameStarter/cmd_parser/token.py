@@ -5,7 +5,7 @@ import cmd_parser.inventory as inventory
 
 # Define a set of vocabulary tokens for valid commands and keywords
 _vocab_tokens = set(['north', 'south', 'east', 'west', 'monster', 'fight', 'pickup', 'search',
-                    'open', 'close', 'run', 'duck', 'hide', 'go', 'swing', 'number', 'operator', 'name', 'equip', 'rest'])
+                    'open', 'close', 'run', 'duck', 'hide', 'go', 'swing', 'number', 'operator', 'name', 'equip', 'rest', 'bash'])
 
 # Define a set of valid operators
 _operators = set(['+', '-', 'x', '/', '(', ')'])

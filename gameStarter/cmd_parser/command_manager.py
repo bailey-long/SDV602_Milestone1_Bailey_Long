@@ -45,7 +45,7 @@ def fight(game_place):
 
         if fight_outcome == 'win':
             # Player wins the fight
-            game_places[game_state]['Story'][0] = 'You are in the dungeon\ninfront of you lies a dead troll.\nTo the north is the castle.'
+            game_places[game_state]['Story'] = 'You are in the dungeon\ninfront of you lies a dead troll.\nTo the north is the castle.'
             return show_current_place()
         else:
             # Player loses the fight, lose health and handle death
@@ -115,16 +115,18 @@ game_places = {
         'Image': 'forest_circle.png'
     },
     'Castle': {
-        'Story': ['You are at the castle. You need to find the key',
+        'Story': ['You are at the castle. You need to find the key or\nBASH the door down',
                   '\n',
                   '\nTo the north is forest.',
-                  '\nTo the south is the dungeon.'],
+                  '\nThrough the door is the dungeon.'],
         'North': (move, 'Forest'),
-        'South': (move, 'Dungeon'),
+        'Bash': (move, 'Dungeon'),
         'Image': 'frog.png'
     },
     'Dungeon': {
-        'Story': ['You are in the dungeon\ninfront of you stands a fearsome troll, fight?.\nTo the north is the castle.'],
+        'Story': ['You are in the dungeon',
+                  '\n'
+                  '\ninfront of you stands a fearsome troll, FIGHT?.\nTo the north is the castle.'],
         'North': (move, 'Castle'),
         'Fight': (fight, "Dungeon"),
         'Image': 'frog.png'
