@@ -4,6 +4,11 @@ import cmd_parser.inventory as invent
 import cmd_parser.monster_fight as fight
 import cmd_parser.status as status
 
+#Need this for when the player wins a fight
+def update_story(monster):
+        game_places[game_state]['Story'] = f'You are in the dungeon\ninfront of you lies a dead {monster}.\nTo the north is the castle.'
+        return show_current_place()
+
 # Function to handle picking up an item
 def pick_up_item(item):
     """
@@ -45,7 +50,6 @@ def move(game_place):
     story_result = show_current_place()
 
     return story_result
-
 # Data for the game: a dictionary of places and their commands/features
 game_state = 'Forest'  # Indicates the starting area
 game_places = {
